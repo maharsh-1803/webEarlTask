@@ -5,6 +5,8 @@ import formRoutes from './routes/formRoute.js';
 import cors from 'cors'
 
 const app = express();
+app.use(cors())
+app.use(express.json())
 
 app.use(
     express.urlencoded({
@@ -24,11 +26,11 @@ const connect = async ()=>{
 }
 
 
-app.use(cors())
-app.use(express.json())
-app.use('/api',formRoutes);
+
 
 app.listen(5000,()=>{
     connect();
     console.log("Sever is running on 5000");
 })
+
+app.use('/api',formRoutes);
